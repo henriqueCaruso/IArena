@@ -6,7 +6,7 @@ title: Example competition — 3 pricing page hero sections
 
 Three fictional "AI design skills" were asked the same brief: *"Design a hero section for a SaaS
 pricing page, product name 'Loop'."* Nobody saw anyone else's output. This is a toy example shipped
-with design-arena so you can see the review flow before wiring up your own competition.
+with IArena so you can see the review flow before wiring up your own competition.
 
 ## Variants
 

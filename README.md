@@ -1,4 +1,4 @@
-# 🏟️ design-arena
+# 🏟️ IArena
 
 Run a competition between multiple AI agents/prompts/skills/models on the **same** task, then compare
 the results side by side: comment on any element (not just selectable text), vote on a winner, and copy
@@ -11,8 +11,8 @@ written plans, prompt A/B tests, model comparisons.
 **Zero dependencies.** One Node.js file, JSON on disk. No framework, no database, no build step.
 
 ```bash
-git clone https://github.com/<you>/design-arena.git
-cd design-arena
+git clone https://github.com/<you>/IArena.git
+cd IArena
 node server.mjs
 # → http://localhost:4600
 ```
@@ -65,6 +65,8 @@ public/
   gallery-shell.html # gallery-mode chrome (iframe + comments + element-picker + prev/next)
 entries/             # created on first run — your competitions live here (gitignored by default)
 example/entries/     # a tiny seeded example you can point ENTRIES_DIR at
+templates/starter.html # base skeleton (header/stats/cards/table) competitors can copy instead of
+                     #   writing CSS from scratch — saves tokens, see SKILL.md
 SKILL.md             # instructions for an AI agent on how to run a competition with this tool
 ```
 

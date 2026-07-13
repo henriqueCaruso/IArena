@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// design-arena — zero-dependency comparison arena for AI-generated artifacts.
+// IArena — zero-dependency comparison arena for AI-generated artifacts.
 // Node built-ins only (http, fs, path). No npm install needed: `node server.mjs`.
 import http from 'node:http';
 import fs from 'node:fs';
@@ -91,7 +91,7 @@ const server = http.createServer(async (req, res) => {
     const url = new URL(req.url, `http://${req.headers.host}`);
     const parts = url.pathname.split('/').filter(Boolean);
 
-    if (url.pathname === '/health') return sendJson(res, { ok: true, service: 'design-arena' });
+    if (url.pathname === '/health') return sendJson(res, { ok: true, service: 'IArena' });
 
     if (url.pathname === '/' || url.pathname === '/index.html') {
       const galleries = readGalleries();
@@ -174,6 +174,6 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`design-arena running: http://localhost:${PORT}/`);
+  console.log(`IArena running: http://localhost:${PORT}/`);
   console.log(`entries dir: ${ENTRIES_DIR}`);
 });

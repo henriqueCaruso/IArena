@@ -1,9 +1,9 @@
 ---
-name: design-arena
+name: IArena
 description: "Run a competition between multiple AI agents/prompts/skills on the SAME task, then compare results side by side — comment on any element (not just text), vote, copy feedback back to your AI in one click. Use when: comparing design mockups, comparing plans/approaches, A/B-testing prompts or models, deciding between several drafts of anything an AI can produce."
 ---
 
-# design-arena
+# IArena
 
 A small, dependency-free tool for running "AI vs AI" (or "prompt vs prompt", "skill vs skill") comparisons
 and collecting structured feedback on the results. Works with **any** AI system — Claude, GPT, Gemini,
@@ -56,6 +56,12 @@ later via "change answer", it never duplicates).
 
 1. Each competitor writes ONE self-contained HTML file: `entries/<slug>-variant-N.html`. It must be
    fully standalone (inline CSS/JS, no build step) so it can be opened directly OR wrapped in an iframe.
+   **Token efficiency tip**: tell each competitor to copy `templates/starter.html` as a base instead
+   of inventing a whole CSS system from scratch — it ships a small design-token skeleton (header,
+   stat tiles, cards, table, badges, buttons) marked with `<!-- FILL: ... -->` comments. The model
+   spends tokens on content and its own visual direction, not on re-deriving boilerplate every time.
+   Restyling the CSS variables at the top is still 100% fair game — the point is to skip re-typing
+   the skeleton, not to constrain the design.
 2. Register the group in `entries/_galleries.json`:
 
 ```json

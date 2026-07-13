@@ -1,0 +1,102 @@
+<!--
+  IArena starter template.
+
+  Copy this file as the base for a competitor entry instead of writing CSS/HTML from scratch —
+  saves tokens (the model fills in content, not boilerplate) and gives every entry a baseline of
+  reasonable typography/spacing/contrast for free. Delete what you don't need, restyle the CSS
+  variables freely (that's the point — the visual DIRECTION is yours, the skeleton is not).
+
+  Sections below are marked with <!-- FILL: ... --> comments. Everything else can stay as-is.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><!-- FILL: page title --></title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%236d5bff'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+  /* ---- design tokens: change these first, everything below reads from them ---- */
+  :root{
+    --accent:#6d5bff; --accent-2:#22c55e; --warn:#d97706; --danger:#e11d48;
+    --bg:#0b0d10; --panel:#14171c; --panel-2:#1b1f26; --line:#2a2f38;
+    --ink:#e8eaed; --muted:#9aa1ab;
+    --sans:system-ui,-apple-system,"Segoe UI",sans-serif;
+    --mono:ui-monospace,"Cascadia Code",Consolas,monospace;
+    --radius:12px; --radius-sm:8px;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f7f7f9; --panel:#fff; --panel-2:#f0f0f3; --line:#e2e2e8; --ink:#16181d; --muted:#6b7280; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans);padding:32px 24px 80px}
+  .wrap{max-width:1080px;margin:0 auto}
+
+  /* ---- header ---- */
+  header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+  header .eyebrow{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  header h1{font-size:32px;font-weight:800;margin:4px 0 0;letter-spacing:-.02em;flex-basis:100%}
+  header p{color:var(--muted);margin:6px 0 0;flex-basis:100%}
+
+  /* ---- stat tiles ---- */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-bottom:28px}
+  .stats .s{background:var(--panel);padding:16px}
+  .stats .s .n{font-size:26px;font-weight:800}
+  .stats .s .l{font:600 11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+
+  /* ---- card grid ---- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:28px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+  .card h3{margin:0 0 6px;font-size:16px}
+  .card p{margin:0;color:var(--muted);font-size:14px}
+
+  /* ---- badge / pill ---- */
+  .badge{display:inline-block;font:700 11px var(--mono);text-transform:uppercase;letter-spacing:.04em;padding:3px 10px;border-radius:99px;border:1px solid currentColor}
+  .badge.ok{color:var(--accent-2)} .badge.warn{color:var(--warn)} .badge.danger{color:var(--danger)}
+
+  /* ---- table ---- */
+  table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-bottom:28px}
+  th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:14px}
+  th{background:var(--panel-2);font:700 11px var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  tr:last-child td{border-bottom:none}
+
+  /* ---- buttons ---- */
+  button,.btn{background:var(--accent);color:#fff;border:none;border-radius:var(--radius-sm);padding:9px 18px;font:600 14px var(--sans);cursor:pointer;text-decoration:none;display:inline-block}
+  .btn.secondary{background:var(--panel-2);color:var(--ink);border:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow"><!-- FILL: eyebrow / category label --></span>
+    <h1><!-- FILL: page title --></h1>
+    <p><!-- FILL: one-line description of what this screen shows --></p>
+  </header>
+
+  <!-- FILL: stat tiles — delete the ones you don't need, copy the <div class="s"> for more -->
+  <div class="stats">
+    <div class="s"><div class="n">128</div><div class="l">Metric one</div></div>
+    <div class="s"><div class="n">92%</div><div class="l">Metric two</div></div>
+    <div class="s"><div class="n">7</div><div class="l">Metric three</div></div>
+  </div>
+
+  <!-- FILL: card grid — replace with your actual content (list items, features, whatever) -->
+  <div class="cards">
+    <div class="card"><h3>Card title</h3><p>Card description text goes here.</p></div>
+    <div class="card"><h3>Card title</h3><p>Card description text goes here.</p></div>
+    <div class="card"><h3>Card title</h3><p>Card description text goes here.</p></div>
+  </div>
+
+  <!-- FILL: table — delete if not needed -->
+  <table>
+    <tr><th>Column A</th><th>Column B</th><th>Status</th><th></th></tr>
+    <tr><td>Row 1</td><td>Value</td><td><span class="badge ok">OK</span></td><td><a class="btn secondary" href="#">Action</a></td></tr>
+    <tr><td>Row 2</td><td>Value</td><td><span class="badge warn">Review</span></td><td><a class="btn secondary" href="#">Action</a></td></tr>
+  </table>
+
+  <a class="btn" href="#"><!-- FILL: primary call to action --></a>
+
+</div>
+</body>
+</html>

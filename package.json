@@ -1,5 +1,5 @@
 {
-  "name": "design-arena",
+  "name": "IArena",
   "version": "0.1.0",
   "description": "Compare outputs from multiple AI agents/prompts/skills side by side — comment on any element, vote, copy feedback back to your AI. Zero dependencies.",
   "type": "module",
