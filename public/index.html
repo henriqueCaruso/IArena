@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>design-arena</title>
+<style>
+:root{ --bg:#0b0d10; --panel:#14171c; --line:#2a2f38; --txt:#e8eaed; --muted:#9aa1ab; --accent:#6d5bff; }
+@media (prefers-color-scheme: light){ :root{ --bg:#f7f7f9; --panel:#fff; --line:#e2e2e8; --txt:#16181d; --muted:#6b7280; } }
+body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.6 system-ui,sans-serif;display:flex;justify-content:center}
+main{max-width:720px;width:100%;padding:48px 24px}
+h1{font-size:28px} .muted{color:var(--muted);font-size:14px}
+ul{list-style:none;padding:0} li{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+a{color:var(--accent);text-decoration:none;font-weight:600} a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<main>
+  <h1>🏟️ design-arena</h1>
+  <p class="muted">Compare outputs from multiple AI agents/skills/prompts side by side — comment on any element, vote, copy feedback back to your AI.</p>
+  <ul>
+    {{ROWS}}
+  </ul>
+  <p class="muted">See README.md for how to seed a new competition.</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Loop — Pricing (Variant 3)</title>
+<style>
+  :root{ --ink:#1a1d24; --muted:#697086; --line:#e3e6ee; --accent:#2f6fed; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:system-ui,sans-serif;color:var(--ink);background:#fafbfd;padding:48px 24px}
+  .wrap{max-width:900px;margin:0 auto}
+  h1{font-size:34px;text-align:center;margin-bottom:8px}
+  p.sub{text-align:center;color:var(--muted);margin-bottom:36px}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  th,td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line);font-size:14px}
+  th{background:#f3f5fa;font-weight:700}
+  th.plan{text-align:center}
+  td.plan,th.plan{text-align:center}
+  .highlight{background:#eef3ff}
+  button{background:var(--accent);color:#fff;border:none;padding:8px 18px;border-radius:8px;font-weight:700;cursor:pointer;font-size:13px}
+  .check{color:#1a9e5c;font-weight:800}
+  .dash{color:var(--muted)}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Loop pricing</h1>
+    <p class="sub">Compare every plan feature-by-feature before you commit.</p>
+    <table>
+      <tr><th>Feature</th><th class="plan">Starter</th><th class="plan highlight">Pro</th><th class="plan">Enterprise</th></tr>
+      <tr><td>Projects</td><td class="plan">3</td><td class="plan highlight">Unlimited</td><td class="plan">Unlimited</td></tr>
+      <tr><td>Team members</td><td class="plan">1</td><td class="plan highlight">10</td><td class="plan">Unlimited</td></tr>
+      <tr><td>API access</td><td class="plan"><span class="dash">—</span></td><td class="plan highlight"><span class="check">✓</span></td><td class="plan"><span class="check">✓</span></td></tr>
+      <tr><td>SSO</td><td class="plan"><span class="dash">—</span></td><td class="plan highlight"><span class="dash">—</span></td><td class="plan"><span class="check">✓</span></td></tr>
+      <tr><td>Price/month</td><td class="plan">$9</td><td class="plan highlight"><b>$29</b></td><td class="plan">Custom</td></tr>
+      <tr><td></td><td class="plan"><button>Choose</button></td><td class="plan highlight"><button>Choose</button></td><td class="plan"><button>Contact us</button></td></tr>
+    </table>
+  </div>
+</body>
+</html>

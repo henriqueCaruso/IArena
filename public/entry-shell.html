@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{TITLE}} · design-arena</title>
+<style>
+:root{
+  --bg:#0b0d10; --panel:#14171c; --panel2:#1b1f26; --line:#2a2f38;
+  --txt:#e8eaed; --muted:#9aa1ab; --accent:#6d5bff; --accent-soft:#6d5bff22;
+  --sans:system-ui,-apple-system,"Segoe UI",sans-serif; --mono:ui-monospace,"Cascadia Code",Consolas,monospace; --disp:var(--sans);
+}
+@media (prefers-color-scheme: light){
+  :root{ --bg:#f7f7f9; --panel:#fff; --panel2:#f0f0f3; --line:#e2e2e8; --txt:#16181d; --muted:#6b7280; }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.6 var(--sans)}
+header{position:sticky;top:0;z-index:50;background:var(--panel);border-bottom:1px solid var(--line);padding:14px 28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header .brand{font:800 15px var(--disp);color:var(--accent);letter-spacing:.08em}
+header h1{font:700 18px var(--disp);margin:0;flex:1;min-width:200px}
+.btn{background:var(--panel2);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:7px 14px;font:600 13px var(--sans);cursor:pointer;transition:.15s;text-decoration:none;display:inline-block}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.back{background:none;border-color:var(--line);color:var(--muted)}
+main{max-width:860px;margin:0 auto;padding:28px 28px 120px}
+.hint{background:var(--accent-soft);border:1px dashed var(--accent);border-radius:10px;padding:10px 16px;font-size:13.5px;margin-bottom:28px}
+#md h1{font:800 28px var(--disp);margin:6px 0 16px}
+#md h2{font:700 20px var(--disp);margin:36px 0 12px;padding-top:16px;border-top:1px solid var(--line)}
+#md h2:first-of-type{border-top:none;margin-top:8px}
+#md p{margin:10px 0} #md a{color:var(--accent)}
+#md code{font:13px var(--mono);background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1.5px 6px}
+#md pre{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:14px;overflow-x:auto;font:13px/1.5 var(--mono);position:relative}
+#md pre code{border:none;padding:0;background:none}
+#md pre .copybtn{position:absolute;top:7px;right:7px;background:var(--panel);border:1px solid var(--line);color:var(--muted);border-radius:6px;padding:3px 10px;font:600 11px var(--sans);cursor:pointer;opacity:0;transition:.15s}
+#md pre:hover .copybtn{opacity:1}
+#md table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+#md th,#md td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left}
+#md ul,#md ol{padding-left:24px} #md li{margin:5px 0}
+.muted{color:var(--muted)}
+.q{background:var(--accent-soft);border:1px solid var(--accent);border-radius:12px;padding:14px 18px;margin:20px 0}
+.q .ql{font:700 12px var(--disp);letter-spacing:.08em;color:var(--accent);text-transform:uppercase;margin-bottom:6px}
+.q .qp{font:600 16px var(--sans);margin-bottom:12px}
+.q .qopts{display:flex;gap:10px;flex-wrap:wrap}
+.q .qopt{background:var(--panel2);border:1px solid var(--accent);color:var(--accent);border-radius:9px;padding:9px 18px;font:700 14px var(--sans);cursor:pointer}
+.q .qopt:hover{background:var(--accent);color:#fff}
+.q .qopt.sel{background:var(--accent);color:#fff}
+.q .qopt:disabled{opacity:.5;cursor:default}
+.q .qdone{font:600 13px var(--mono);color:#3ecf8e;margin-top:8px;display:none;align-items:center;gap:10px}
+.q.answered .qdone{display:flex}
+.q .qchange{background:none;border:none;color:var(--muted);font:600 12px var(--sans);text-decoration:underline;cursor:pointer;padding:0}
+.q .qchange:hover{color:var(--accent)}
+#fab{position:fixed;display:none;z-index:90;background:var(--accent);color:#fff;border:none;border-radius:99px;padding:7px 14px;font:700 13px var(--sans);cursor:pointer;box-shadow:0 6px 20px #0009}
+#panel{position:fixed;top:0;right:-420px;width:400px;max-width:92vw;height:100vh;background:var(--panel);border-left:1px solid var(--line);z-index:80;transition:right .25s;display:flex;flex-direction:column}
+#panel.open{right:0}
+#panel .ph{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+#panel .ph b{font:700 15px var(--disp);flex:1}
+#list{flex:1;overflow-y:auto;padding:14px 20px}
+.com{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:12px}
+.com.resolved{opacity:.45}
+.com .cq{font-size:12.5px;color:var(--muted);border-left:2px solid var(--accent);padding-left:10px;margin-bottom:6px;font-style:italic}
+.com .ct{font-size:14px;white-space:pre-wrap}
+.com .cm{display:flex;gap:10px;margin-top:8px;font-size:12px}
+.com .cm span{color:var(--muted);flex:1;font-family:var(--mono);font-size:11px}
+.com .cm button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:12px;padding:0}
+#dlg{position:fixed;z-index:95;inset:0;background:#000a;display:none;align-items:center;justify-content:center}
+#dlg.open{display:flex}
+#dlg .box{background:var(--panel);border:1px solid var(--line);border-radius:14px;width:520px;max-width:92vw;padding:20px 22px}
+#dlg textarea{width:100%;min-height:110px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;color:var(--txt);font:14px var(--sans);padding:10px;resize:vertical}
+#dlg .db{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font:600 13.5px var(--sans);border-radius:99px;padding:9px 22px;display:none;z-index:99}
+</style>
+</head>
+<body data-doc-id="{{DOC_ID}}">
+<header>
+  <span class="brand">design-arena</span>
+  <h1>{{TITLE}}</h1>
+  <a class="btn back" href="/">← index</a>
+  <button class="btn" id="bPanel">💬 Comments (<span id="nCom">0</span>)</button>
+  <button class="btn primary" id="bCopy">📋 Copy</button>
+</header>
+<main>
+<div class="hint" id="hint">💡 Select any text and click "Comment" to annotate, or click an option in a vote block. Everything saves to disk instantly.</div>
+<div id="md"></div>
+</main>
+<button id="fab">💬 Comment</button>
+<div id="panel">
+  <div class="ph"><b>Comments</b><button class="btn" id="bClose">✕</button></div>
+  <div id="list"></div>
+</div>
+<div id="dlg">
+  <div class="box">
+    <div class="dq" id="dlgQuote" style="font-size:13px;color:var(--muted);border-left:2px solid var(--accent);padding-left:10px;margin-bottom:10px;max-height:90px;overflow:hidden;font-style:italic"></div>
+    <textarea id="dlgText" placeholder="Your comment..."></textarea>
+    <div class="db">
+      <button class="btn" id="dlgCancel">Cancel</button>
+      <button class="btn primary" id="dlgSave">Save (Ctrl+Enter)</button>
+    </div>
+  </div>
+</div>
+<div id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/marked@11/marked.min.js"></script>
+<script>
+(function(){
+  var DOC = document.body.getAttribute('data-doc-id') || 'doc';
+  var API = '/api';
+  var DRAFTK = 'arena-draft:' + DOC;
+  var sel = {quote:'', anchor:''};
+  var COMMENTS = [];
+
+  function b64utf8(b){ try{ return decodeURIComponent(Array.prototype.map.call(atob(b),function(c){return '%'+('00'+c.charCodeAt(0).toString(16)).slice(-2);}).join('')); }catch(e){ return ''; } }
+  var MDSRC = b64utf8("{{MD_B64}}");
+  var mdEl = document.getElementById('md');
+  if (typeof marked !== 'undefined') { marked.setOptions({ breaks:true, gfm:true }); mdEl.innerHTML = marked.parse(MDSRC); }
+  else { mdEl.textContent = MDSRC; }
+
+  function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+  function toast(msg){ var t=document.getElementById('toast'); t.textContent=msg; t.style.display='block'; setTimeout(function(){t.style.display='none';},2200); }
+
+  // ```vote blocks -> clickable card. Format: line 1 = question, "- option" lines = choices.
+  mdEl.querySelectorAll('pre > code.language-vote, pre > code.language-pergunta').forEach(function(code){
+    var lines = code.textContent.split('\n').map(function(l){return l.replace(/\s+$/,'');}).filter(function(l){return l.trim().length;});
+    if(!lines.length) return;
+    var question = lines[0];
+    var opts = lines.slice(1).filter(function(l){return /^[-*]\s+/.test(l);}).map(function(l){return l.replace(/^[-*]\s+/,'').trim();});
+    if(!opts.length) opts = ['OK'];
+    var div = document.createElement('div'); div.className='q';
+    div.innerHTML = '<div class="ql">Vote — click to answer (can change later)</div><div class="qp">'+esc(question)+'</div>'
+      + '<div class="qopts">'+opts.map(function(o,i){return '<button class="qopt" data-q="'+esc(question)+'" data-o="'+esc(o)+'">'+esc(o)+'</button>';}).join('')+'</div>'
+      + '<div class="qdone"></div>';
+    code.closest('pre').replaceWith(div);
+  });
+  mdEl.querySelectorAll('pre').forEach(function(pre){
+    var btn=document.createElement('button'); btn.className='copybtn'; btn.type='button'; btn.textContent='copy';
+    btn.style.cssText='position:absolute;top:7px;right:7px;background:var(--panel);border:1px solid var(--line);color:var(--muted);border-radius:6px;padding:3px 10px;font:600 11px var(--sans);cursor:pointer';
+    btn.addEventListener('click',function(ev){
+      ev.stopPropagation();
+      var code=pre.querySelector('code'); var txt=code?code.textContent:pre.textContent;
+      navigator.clipboard && navigator.clipboard.writeText(txt).then(function(){ btn.textContent='✓'; setTimeout(function(){btn.textContent='copy';},1200); });
+    });
+    pre.appendChild(btn);
+  });
+
+  // answer a vote question; if a previous answer exists (open OR resolved), delete it first — dedup by
+  // question text so changing your mind never creates a duplicate entry.
+  function answerVote(card, question, answer, doneLabel, okMsg){
+    var prevIdx = -1;
+    for (var i=0;i<COMMENTS.length;i++){ var c=COMMENTS[i]; if((c.section||'')==='vote' && c.quote===question){ prevIdx=i; } }
+    function postNew(){
+      postComment('vote', question, answer, function(){ lockCard(card, doneLabel); toast(okMsg); }, function(){ toast('failed to save'); });
+    }
+    if (prevIdx >= 0){ fetch(API + '/comments/' + encodeURIComponent(DOC) + '/' + prevIdx, {method:'DELETE'}).then(postNew, postNew); }
+    else { postNew(); }
+  }
+  function postComment(section, quote, text, ok, fail){
+    fetch(API + '/comments/' + encodeURIComponent(DOC), {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ section:section||'', quote:quote||'', text:text })
+    }).then(function(r){ return r.json(); }).then(function(){ loadComments(function(){ if(ok)ok(); }); }).catch(function(){ if(fail)fail(); });
+  }
+  function questionOf(card){ var o=card.querySelector('.qopt'); return o ? o.getAttribute('data-q') : ''; }
+  function lockCard(card, doneLabel){
+    card.classList.add('answered');
+    card.querySelectorAll('.qopt').forEach(function(b){ b.disabled = true; });
+    var done = card.querySelector('.qdone');
+    if (done) done.innerHTML = '<span>✓ ' + esc(doneLabel) + '</span><button class="qchange" type="button">change answer</button>';
+  }
+  function unlockCard(card){
+    card.classList.remove('answered');
+    card.querySelectorAll('.qopt').forEach(function(b){ b.disabled = false; b.classList.remove('sel'); });
+  }
+  function markSelected(card, answerText){
+    card.querySelectorAll('.qopt').forEach(function(b){ b.classList.toggle('sel', answerText === b.getAttribute('data-o')); });
+  }
+  function existingAnswer(question){
+    for (var i=0;i<COMMENTS.length;i++){ var c=COMMENTS[i]; if((c.section||'')==='vote' && c.quote===question){ return (c.text||'').replace(/^\s*Answer:\s*/,''); } }
+    return null;
+  }
+  function syncVotes(){
+    mdEl.querySelectorAll('.q').forEach(function(card){
+      if (card.classList.contains('answered')) return;
+      var ans = existingAnswer(questionOf(card));
+      if (ans !== null) { lockCard(card, ans); markSelected(card, ans); }
+    });
+  }
+  mdEl.addEventListener('click', function(e){
+    var chg = e.target.closest('.qchange');
+    if (chg){ unlockCard(chg.closest('.q')); return; }
+    var b = e.target.closest('.qopt'); if(!b) return;
+    var card = b.closest('.q');
+    if (card.classList.contains('answered') || b.disabled) return;
+    var question = b.getAttribute('data-q'), option = b.getAttribute('data-o');
+    lockCard(card, option); markSelected(card, option);
+    answerVote(card, question, 'Answer: ' + option, option, '✓ answer recorded: ' + option);
+  });
+
+  var fab = document.getElementById('fab');
+  document.addEventListener('mouseup', function(e){
+    if (e.target && e.target.closest && e.target.closest('#panel,#dlg,#fab,header,.q')) return;
+    setTimeout(function(){
+      var s = window.getSelection(); var txt = s ? s.toString().trim() : '';
+      if (txt.length > 2 && txt.length < 1200){
+        var r = s.getRangeAt(0).getBoundingClientRect();
+        sel.quote = txt; sel.anchor = '';
+        fab.style.display='block'; fab.style.position='absolute';
+        fab.style.left = Math.min(window.innerWidth-130, Math.max(8, r.left + r.width/2 - 50)) + 'px';
+        fab.style.top  = (window.scrollY + r.bottom + 8) + 'px';
+      } else { fab.style.display='none'; }
+    }, 10);
+  });
+  var dlg = document.getElementById('dlg'), dlgText = document.getElementById('dlgText');
+  fab.addEventListener('click', function(){
+    fab.style.display='none';
+    document.getElementById('dlgQuote').textContent = '"' + sel.quote + '"';
+    dlgText.value = localStorage.getItem(DRAFTK) || ''; dlg.classList.add('open'); dlgText.focus();
+  });
+  function closeDlg(){ dlg.classList.remove('open'); }
+  document.getElementById('dlgCancel').addEventListener('click', closeDlg);
+  function saveCom(){
+    var txt = dlgText.value.trim(); if (!txt){ closeDlg(); return; }
+    localStorage.removeItem(DRAFTK);
+    postComment(sel.anchor, sel.quote, txt, function(){ closeDlg(); toast('💬 Comment saved'); }, function(){ toast('error'); });
+  }
+  document.getElementById('dlgSave').addEventListener('click', saveCom);
+  dlgText.addEventListener('keydown', function(e){ if(e.ctrlKey && e.key==='Enter') saveCom(); });
+  dlgText.addEventListener('input', function(){ localStorage.setItem(DRAFTK, dlgText.value); });
+
+  var panel = document.getElementById('panel');
+  document.getElementById('bPanel').addEventListener('click', function(){ panel.classList.toggle('open'); });
+  document.getElementById('bClose').addEventListener('click', function(){ panel.classList.remove('open'); });
+
+  function loadComments(cb){
+    fetch(API + '/comments/' + encodeURIComponent(DOC)).then(function(r){return r.json();})
+      .then(function(arr){ COMMENTS = Array.isArray(arr)?arr:[]; render(); syncVotes(); if(cb)cb(); })
+      .catch(function(){ if(cb)cb(); });
+  }
+  function render(){
+    var arr = COMMENTS;
+    document.getElementById('nCom').textContent = arr.filter(function(c){return !c.resolved;}).length;
+    var html = '';
+    if (!arr.length) html = '<p class="muted" style="font-size:13.5px">No comments yet.</p>';
+    arr.slice().reverse().forEach(function(c, _i){
+      var realIdx = arr.length - 1 - _i;
+      var time = c.ts ? String(c.ts).substring(11,16) : '';
+      html += '<div class="com'+(c.resolved?' resolved':'')+'">'
+        + (c.quote?'<div class="cq">'+esc(c.quote.length>140?c.quote.substring(0,140)+'…':c.quote)+'</div>':'')
+        + '<div class="ct">'+esc(c.text||'')+'</div>'
+        + '<div class="cm"><span>'+esc(c.section||'')+' · '+time+'</span>'
+        + '<button data-action="resolve" data-idx="'+realIdx+'">'+(c.resolved?'resolved':'resolve')+'</button></div></div>';
+    });
+    document.getElementById('list').innerHTML = html;
+  }
+  document.getElementById('list').addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    if (b.getAttribute('data-action')==='resolve'){
+      var idx = parseInt(b.getAttribute('data-idx'),10);
+      fetch(API + '/comments/' + encodeURIComponent(DOC) + '/' + idx, {method:'DELETE'}).then(function(){ loadComments(); });
+    }
+  });
+  function copy(){
+    var open = COMMENTS.filter(function(c){return !c.resolved;});
+    var md = '## Comments on "{{TITLE}}" ('+open.length+' open)\n\n';
+    open.forEach(function(c,i){ md += (i+1)+'. "'+(c.quote||'').replace(/\s+/g,' ').substring(0,220)+'"\n   → '+(c.text||'')+'\n\n'; });
+    if (navigator.clipboard) navigator.clipboard.writeText(md).then(function(){ toast('📋 Copied!'); });
+  }
+  document.getElementById('bCopy').addEventListener('click', copy);
+  loadComments();
+})();
+</script>
+</body>
+</html>

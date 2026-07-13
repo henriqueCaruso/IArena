@@ -1,0 +1,11 @@
+{
+  "pricing-hero": {
+    "title": "Example competition — pricing page hero",
+    "entry_index": "pricing-hero.md",
+    "items": [
+      { "file": "pricing-hero-variant-1.html", "title": "Variant 1", "variant": "minimal / monochrome" },
+      { "file": "pricing-hero-variant-2.html", "title": "Variant 2", "variant": "playful / gradient" },
+      { "file": "pricing-hero-variant-3.html", "title": "Variant 3", "variant": "dense / comparison table" }
+    ]
+  }
+}
