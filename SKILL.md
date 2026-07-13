@@ -50,7 +50,8 @@ Which approach should we go with?
 
 Open `/<slug>.md` in the browser — it renders with `marked.js`, gets a comment sidebar, and the
 ```vote``` block becomes clickable buttons whose answer is saved as a comment (answer can be changed
-later via "change answer", it never duplicates).
+later via "change answer", it never duplicates). A "📝 General note" button next to the comments button
+lets you leave a page-level comment without selecting any text.
 
 ### Gallery mode (visual/interactive HTML — mockups, dashboards, prototypes)
 
@@ -81,12 +82,23 @@ later via "change answer", it never duplicates).
    - **Comment by text selection** (drag-select inside the entry, click "Comment").
    - **Comment by element** ("🎯 Element" toggle — click ANYTHING, even an icon or empty area, no
      selectable text required).
+   - **General note** ("📝 General note" button) — a comment about the page as a whole, no selection
+     or click needed. Saved with `section: "general"` and an empty quote.
    - **prev/next** navigation between variants (`←`/`→` keys too).
    - **Copy ALL** — one click aggregates open comments across every variant in the group into one
      paste-ready block.
    - Opening the raw file directly (`/<slug>-variant-1.html`, no `/gallery/` prefix) still works and
      shows the file's own favicon/title untouched — useful to sanity-check a mockup's favicon in a
      real browser tab.
+
+### Multi-round competitions (same entry_index, different groups)
+
+If a competition needs more than one round (e.g. round 1 pits 6 raw variants against each other, round 2
+pits 2 syntheses of the round-1 winners), register round 2 as its own group in `_galleries.json` with
+`items` pointing at the new files — but keep `entry_index` pointing at the **same** shared vote/overview
+page as round 1. "Copy ALL" always aggregates every item from every group that shares that `entry_index`
+(deduplicated by filename), so reviewing round 2 still surfaces round 1's comments and vice versa; the
+prev/next navigation stays scoped to whichever round's page you're on.
 
 ## Running the "fan-out" — model/framework agnostic
 

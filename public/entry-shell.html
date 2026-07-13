@@ -75,6 +75,7 @@ main{max-width:860px;margin:0 auto;padding:28px 28px 120px}
   <span class="brand">IArena</span>
   <h1>{{TITLE}}</h1>
   <a class="btn back" href="/">← index</a>
+  <button class="btn" id="bGeneral" title="leave a general comment about the whole page — no selection needed">📝 General note</button>
   <button class="btn" id="bPanel">💬 Comments (<span id="nCom">0</span>)</button>
   <button class="btn primary" id="bCopy">📋 Copy</button>
 </header>
@@ -208,10 +209,15 @@ main{max-width:860px;margin:0 auto;padding:28px 28px 120px}
     }, 10);
   });
   var dlg = document.getElementById('dlg'), dlgText = document.getElementById('dlgText');
-  fab.addEventListener('click', function(){
+  function openDialog(){
     fab.style.display='none';
-    document.getElementById('dlgQuote').textContent = '"' + sel.quote + '"';
+    document.getElementById('dlgQuote').textContent = sel.quote ? ('"' + sel.quote + '"') : '(general note — no specific element selected)';
     dlgText.value = localStorage.getItem(DRAFTK) || ''; dlg.classList.add('open'); dlgText.focus();
+  }
+  fab.addEventListener('click', openDialog);
+  document.getElementById('bGeneral').addEventListener('click', function(){
+    sel.quote = ''; sel.anchor = 'general';
+    openDialog();
   });
   function closeDlg(){ dlg.classList.remove('open'); }
   document.getElementById('dlgCancel').addEventListener('click', closeDlg);

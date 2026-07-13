@@ -69,9 +69,10 @@ main iframe{width:100%;height:100%;border:none;display:block;background:#fff}
   {{NEXT_BTN}}
   <a class="btn back" href="/" title="back to index">← index</a>
   <button class="btn" id="bElement" title="click anywhere in the entry to comment, even without selectable text">🎯 Element</button>
+  <button class="btn" id="bGeneral" title="leave a general comment about the whole page — no selection or click needed">📝 General note</button>
   <button class="btn" id="bPanel">💬 Comments (<span id="nCom">0</span>)</button>
   <button class="btn primary" id="bCopy">📋 Copy</button>
-  <button class="btn primary" id="bCopyGroup">📋 Copy ALL ({{TOTAL}})</button>
+  <button class="btn primary" id="bCopyGroup">📋 Copy ALL ({{COPY_TOTAL}})</button>
 </header>
 <div class="hintbar">💡 Select text inside the entry, or toggle 🎯 Element and click anything (icon, image, empty area). <b>{{GROUP_TITLE}}</b> — item {{INDEX}} of {{TOTAL}}.</div>
 
@@ -149,7 +150,7 @@ main iframe{width:100%;height:100%;border:none;display:block;background:#fff}
   var hovered = null;
   function openDialog(){
     document.getElementById('fab').style.display='none';
-    document.getElementById('dlgQuote').textContent = '"' + sel.quote + '"';
+    document.getElementById('dlgQuote').textContent = sel.quote ? ('"' + sel.quote + '"') : '(general note — no specific element selected)';
     dlgText.value = localStorage.getItem(DRAFTK) || ''; dlg.classList.add('open'); dlgText.focus();
   }
   function armSelection(win, doc, frameRect){
@@ -203,6 +204,12 @@ main iframe{width:100%;height:100%;border:none;display:block;background:#fff}
       if (doc && doc.body) doc.body.style.cursor = elementMode ? 'crosshair' : '';
       if (!elementMode && hovered) { hovered.style.outline = ''; hovered = null; }
     } catch(e){}
+  });
+
+  var bGeneral = document.getElementById('bGeneral');
+  bGeneral.addEventListener('click', function(){
+    sel.quote = ''; sel.anchor = 'general';
+    openDialog();
   });
 
   var dlg = document.getElementById('dlg'), dlgText = document.getElementById('dlgText');

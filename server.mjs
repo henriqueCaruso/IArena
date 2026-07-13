@@ -69,8 +69,27 @@ function renderGallery(group, index) {
   const nextBtn = index < total
     ? `<a class="btn" data-nav="next" href="/gallery/${encodeURIComponent(group)}/${index + 1}">next &rarr;</a>`
     : `<span class="btn back" style="opacity:.35;pointer-events:none">next &rarr;</span>`;
+  // Copy ALL must see every item across every group that shares this competition's entry_index page.
+  // Multi-round competitions register round 1 and round 2 as separate groups in _galleries.json that
+  // both point at the same entry_index (the shared vote/overview page) — so reviewing round 2 should
+  // still surface round 1's items (and comments) and vice versa. prev/next navigation above stays
+  // scoped to the current group's own `items`/`total`; only this cross-group list (fed to the client
+  // as ITEMS_JSON, which drives "Copy ALL") changes.
+  const seenFiles = new Set();
+  if (g.entry_index) seenFiles.add(g.entry_index);
+  const siblingGroups = g.entry_index
+    ? Object.values(galleries).filter((og) => og.entry_index === g.entry_index)
+    : [g];
+  const crossItems = [];
+  for (const og of siblingGroups) {
+    for (const it of (og.items || [])) {
+      if (seenFiles.has(it.file)) continue;
+      seenFiles.add(it.file);
+      crossItems.push(it);
+    }
+  }
   const itemsForClient = (g.entry_index ? [{ file: g.entry_index, title: 'Overview / vote', variant: '' }] : []).concat(
-    items.map((it) => ({ file: it.file, title: it.title, variant: it.variant || '' }))
+    crossItems.map((it) => ({ file: it.file, title: it.title, variant: it.variant || '' }))
   );
   const shell = fs.readFileSync(path.join(PUBLIC_DIR, 'gallery-shell.html'), 'utf8');
   return shell
@@ -79,6 +98,7 @@ function renderGallery(group, index) {
     .replaceAll('{{VARIANT}}', htmlEscape(item.variant || ''))
     .replaceAll('{{INDEX}}', String(index))
     .replaceAll('{{TOTAL}}', String(total))
+    .replaceAll('{{COPY_TOTAL}}', String(itemsForClient.length))
     .replaceAll('{{PREV_BTN}}', prevBtn)
     .replaceAll('{{NEXT_BTN}}', nextBtn)
     .replaceAll('{{FILE}}', htmlEscape(item.file))
