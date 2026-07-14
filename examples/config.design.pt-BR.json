@@ -1,0 +1,51 @@
+{
+  "slug": "exemplo-dashboard-operacional",
+  "title": "Exemplo — dashboard operacional",
+  "round": 1,
+  "brief": "templates/brief-design.pt-BR.md",
+  "criteria": "templates/criterios-design.pt-BR.md",
+  "starter": "templates/starter.html",
+  "output_dir": "entries",
+  "run_dir": "runs/exemplo-dashboard-operacional-r1",
+  "competitors": [
+    {
+      "id": "baseline",
+      "label": "Baseline sem skill",
+      "objective": "Resolver o brief apenas com o contexto fornecido, sem instruções especializadas."
+    },
+    {
+      "id": "frontend-design",
+      "label": "Anthropic frontend-design",
+      "skills": [
+        "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design/skills/frontend-design"
+      ],
+      "objective": "Buscar uma direção visual distinta e produção frontend de alta qualidade."
+    },
+    {
+      "id": "ui-brs",
+      "label": "IArena ui-brs",
+      "skills": [
+        "skills/ui-brs/SKILL.md"
+      ],
+      "objective": "Priorizar consistência, linguagem operacional e o padrão visual interno da BR Supply."
+    },
+    {
+      "id": "combo",
+      "label": "frontend-design + ui-brs + favicon",
+      "skills": [
+        "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design/skills/frontend-design",
+        "skills/ui-brs/SKILL.md",
+        "skills/favicon/SKILL.md"
+      ],
+      "objective": "Combinar direção estética, padrão interno e acabamento de identidade sem perder clareza."
+    },
+    {
+      "id": "ui-ux-pro-max",
+      "label": "UI/UX Pro Max original",
+      "skills": [
+        "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/tree/main/.claude/skills/design"
+      ],
+      "objective": "Produzir uma alternativa independente, sem herdar automaticamente a identidade visual interna."
+    }
+  ]
+}

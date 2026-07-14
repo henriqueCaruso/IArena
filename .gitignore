@@ -1,3 +1,5 @@
 /entries/
+/runs/
+/.tmp-tests/
 node_modules/
 .DS_Store
