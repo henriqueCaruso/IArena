@@ -1,0 +1,14 @@
+{
+  "id": "brs",
+  "name": "BRS Control Room",
+  "description": "Tema opcional para produtos internos da BR Supply, extraído do UI Kit usado pelo AI OS e pela Mesa BRS.",
+  "starter": "themes/brs/starter.html",
+  "criteria_addendum": [
+    "themes/brs/criterios.md"
+  ],
+  "references": [
+    "themes/brs/tokens.css",
+    "themes/brs/components.css"
+  ],
+  "shared_skills": []
+}

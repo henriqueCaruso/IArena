@@ -1,0 +1,17 @@
+/* Componentes mínimos do BRS UI Kit. Use somente o necessário. */
+.brs-base{margin:0;min-height:100vh;background:radial-gradient(1200px 600px at 50% -10%,#13202e 0%,var(--bg) 60%);color:var(--txt);font:16px/1.6 var(--sans)}
+.brs-base *{box-sizing:border-box}
+.brs-header{display:flex;align-items:center;gap:14px;padding:14px 28px;border-bottom:1px solid var(--line);background:#0c1118ee;backdrop-filter:blur(6px);flex-wrap:wrap}
+.brs-brand{font:800 15px var(--disp);color:var(--orange);letter-spacing:.12em}
+.brs-title{font:800 28px var(--disp);margin:0}.brs-kicker{font:600 11px var(--mono);color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+.brs-main{max-width:1180px;margin:0 auto;padding:28px}
+.brs-panel,.brs-card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px 18px}
+.brs-card{transition:.16s}.brs-card:hover{border-color:var(--orange);transform:translateY(-2px);box-shadow:0 10px 30px #0006}
+.brs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.brs-btn{background:var(--panel2);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:8px 14px;font:600 13px var(--sans);cursor:pointer;text-decoration:none;display:inline-block}
+.brs-btn:hover{border-color:var(--orange);color:var(--orange)}.brs-btn.primary{background:var(--orange);border-color:var(--orange);color:#16110c}
+.brs-badge{display:inline-block;font:600 11px var(--mono);border-radius:99px;padding:2px 9px;border:1px solid var(--line);color:var(--muted)}
+.brs-badge.ok{color:var(--ok);border-color:var(--ok)}.brs-badge.warn{color:var(--warn);border-color:var(--warn)}.brs-badge.bad{color:var(--bad);border-color:var(--bad)}.brs-badge.orange{color:var(--orange);background:var(--orange-soft);border-color:var(--orange)}
+.brs-table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line)}.brs-table th,.brs-table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}.brs-table th{font:600 11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;background:var(--panel2)}
+.brs-field{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:8px;color:var(--txt);padding:9px 11px;font:14px var(--sans)}.brs-field:focus{outline:2px solid var(--orange);outline-offset:1px}
+@media(max-width:760px){.brs-header,.brs-main{padding:18px}.brs-table{display:block;overflow-x:auto}}
