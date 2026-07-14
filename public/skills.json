@@ -1,0 +1,126 @@
+{
+  "updated_at": "2026-07-14",
+  "principle": "Compare criação com criação. Use skills de qualidade e síntese depois da primeira rodada.",
+  "skills": [
+    {
+      "id": "baseline",
+      "name": "Baseline sem skill",
+      "role": "controle",
+      "source": "IArena",
+      "url": "",
+      "best_for": "Medir o ganho real causado pela skill, usando o mesmo modelo e brief.",
+      "notes": "Inclua sempre que custo e token efficiency forem importantes.",
+      "recommended": true
+    },
+    {
+      "id": "frontend-design",
+      "name": "frontend-design",
+      "role": "criação",
+      "source": "Anthropic",
+      "url": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design/skills/frontend-design",
+      "best_for": "Direção visual distinta e implementação frontend de alta qualidade.",
+      "notes": "Boa candidata criadora para a primeira rodada.",
+      "recommended": true
+    },
+    {
+      "id": "ui-brs",
+      "name": "ui-brs",
+      "role": "marca",
+      "source": "IArena / BR Supply",
+      "url": "https://github.com/henriqueCaruso/IArena/tree/main/skills/ui-brs",
+      "best_for": "Produtos internos operacionais com padrão preto, branco e laranja, linguagem simples e tabelas claras.",
+      "notes": "Pode competir sozinha ou combinada com frontend-design.",
+      "recommended": true
+    },
+    {
+      "id": "favicon",
+      "name": "favicon",
+      "role": "acabamento",
+      "source": "IArena",
+      "url": "https://github.com/henriqueCaruso/IArena/tree/main/skills/favicon",
+      "best_for": "Identidade de aba e acabamento de protótipos autocontidos.",
+      "notes": "Use junto de uma skill criadora, não como variante isolada.",
+      "recommended": true
+    },
+    {
+      "id": "ui-ux-pro-max",
+      "name": "UI/UX Pro Max — design",
+      "role": "criação",
+      "source": "NextLevelBuilder",
+      "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/tree/main/.claude/skills/design",
+      "best_for": "Alternativa ampla de design, tokens, UI styling, ícones e identidade.",
+      "notes": "Útil como contraste sem viés da marca interna.",
+      "recommended": true
+    },
+    {
+      "id": "theme-factory",
+      "name": "theme-factory",
+      "role": "criação",
+      "source": "Anthropic",
+      "url": "https://github.com/anthropics/skills/tree/main/skills/theme-factory",
+      "best_for": "Explorar temas, combinações de cor e tipografia para artefatos e páginas.",
+      "notes": "Mais forte em direção de tema do que em fluxo operacional completo.",
+      "recommended": false
+    },
+    {
+      "id": "brand-guidelines",
+      "name": "brand-guidelines",
+      "role": "marca",
+      "source": "Anthropic",
+      "url": "https://github.com/anthropics/skills/tree/main/skills/brand-guidelines",
+      "best_for": "Estudar como uma marca pode ser transformada em regras reutilizáveis para agentes.",
+      "notes": "As regras são da Anthropic; use como referência de estrutura, não como identidade BR Supply.",
+      "recommended": false
+    },
+    {
+      "id": "web-design-guidelines",
+      "name": "web-design-guidelines",
+      "role": "qualidade",
+      "source": "Vercel",
+      "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines",
+      "best_for": "Auditoria de interface, acessibilidade e boas práticas de web design.",
+      "notes": "Execute depois que as variantes estiverem prontas.",
+      "recommended": true
+    },
+    {
+      "id": "react-best-practices",
+      "name": "react-best-practices",
+      "role": "qualidade",
+      "source": "Vercel",
+      "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices",
+      "best_for": "Revisar a implementação React/Next depois da escolha visual.",
+      "notes": "Não é concorrente de mockup; entra na fase de produção.",
+      "recommended": true
+    },
+    {
+      "id": "revisor-ui",
+      "name": "revisor-ui",
+      "role": "qualidade",
+      "source": "IArena",
+      "url": "https://github.com/henriqueCaruso/IArena/tree/main/skills/revisor-ui",
+      "best_for": "Comentários estruturados, esforço relativo e separação entre defeito e preferência.",
+      "notes": "Use o mesmo revisor em todas as variantes.",
+      "recommended": true
+    },
+    {
+      "id": "sintese-vencedora",
+      "name": "sintese-vencedora",
+      "role": "síntese",
+      "source": "IArena",
+      "url": "https://github.com/henriqueCaruso/IArena/tree/main/skills/sintese-vencedora",
+      "best_for": "Segunda rodada com as duas melhores propostas e feedback rastreável.",
+      "notes": "Mantém uma vencedora como esqueleto; não mistura tudo sem direção.",
+      "recommended": true
+    },
+    {
+      "id": "design-system-skill-pipeline",
+      "name": "Design Systems to Agent Skills",
+      "role": "meta",
+      "source": "Vercel Labs",
+      "url": "https://github.com/vercel-labs/design-systems-to-agent-skills",
+      "best_for": "Transformar um design system real em skills verificadas para múltiplos agentes.",
+      "notes": "Próximo passo para evoluir ui-brs a partir do código e dos componentes reais.",
+      "recommended": true
+    }
+  ]
+}
