@@ -1,52 +1,48 @@
 ---
-name: iarena
-description: Executa uma comparação controlada entre IAs, prompts, skills ou modelos usando o mesmo brief, outputs isolados, galeria com comentários, voto e rodada de síntese. Use quando houver duas ou mais abordagens plausíveis e a decisão humana se beneficiar de comparação lado a lado.
+name: iarena-reference-ptbr
+description: Referência operacional em português para comparar IAs, prompts, skills ou modelos usando brief comum, outputs isolados, tema opcional, galeria, voto e síntese.
 license: MIT
 ---
 
-# IArena
+# IArena — referência operacional
 
-## Objetivo
-
-Criar evidência comparável, não apenas muitas respostas. O fluxo separa geração, revisão, voto, síntese e implementação.
+A skill instalável principal está em `SKILL.md`. Este arquivo resume o processo para leitura humana.
 
 ## Procedimento
 
 1. Defina a variável testada.
 2. Escreva um brief único e critérios comuns.
-3. Selecione de 3 a 5 variantes, incluindo baseline quando o ganho da skill estiver em dúvida.
-4. Crie uma configuração e execute:
+3. Escolha o perfil: `normal`, `multiagente` ou `ultracode`.
+4. Ative `"theme":"brs"` quando todos precisarem seguir o design system BRS.
+5. Selecione de 3 a 5 variantes, incluindo baseline quando o ganho da skill estiver em dúvida.
+6. Execute:
 
 ```bash
 node scripts/nova-competicao.mjs --config=<arquivo.json>
 ```
 
-5. Rode cada prompt em sessão ou agente isolado.
-6. Inicie `node server.mjs` e revise a galeria.
-7. Aplique a mesma skill de auditoria a todas as variantes.
-8. Copie comentários e voto.
-9. Faça uma segunda rodada com no máximo duas sínteses.
-10. Converta a vencedora em plano de implementação no produto real.
+7. Rode cada prompt em subagente ou sessão isolada.
+8. Inicie `node server.mjs` e revise a galeria.
+9. Aplique a mesma auditoria a todas as variantes.
+10. Faça segunda rodada com no máximo duas sínteses, somente após comentários e voto.
+11. Converta a vencedora em plano separado para o produto real.
+
+## Tema BRS
+
+O preset `brs` fornece tokens, starter, componentes e critérios comuns. Ele não deve ser tratado como diferencial exclusivo de `ui-brs`; a skill `ui-brs` compete por estrutura operacional, linguagem e velocidade de decisão.
 
 ## Seleção de skills
 
+- orquestração: `iarena`;
 - criação: `frontend-design`, `ui-brs`, `UI/UX Pro Max`, `theme-factory`;
 - acabamento: `favicon`;
 - qualidade: `revisor-ui`, `web-design-guidelines`, `react-best-practices`;
-- síntese: `sintese-vencedora`;
-- meta: `Design Systems to Agent Skills`.
+- síntese: `sintese-vencedora`.
 
-Consulte `/skills.html` ou `public/skills.json` para links e comandos.
+## Token efficiency
 
-## Regras de token efficiency
-
-- Referencie arquivos; não duplique brief e skill em cada prompt.
-- Leia somente o necessário.
-- Use `templates/starter.html`.
-- Não execute builds ou instalações durante a geração de mockups.
+- Referencie arquivos; não duplique brief, tema e skill no prompt.
+- Cada agente lê somente seu contrato.
+- Use o starter do tema ou `templates/starter.html`.
+- Não execute builds ou instalações durante mockups.
 - Guarde modelos caros para síntese ou revisão crítica.
-- Não leve todas as variantes para a rodada final.
-
-## Critério de encerramento
-
-A competição termina quando há vencedor, feedback consolidado, decisões rastreáveis e um plano separado para implementar no código real.

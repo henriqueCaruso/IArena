@@ -1,27 +1,21 @@
-# Skills de design e frontend
+# Skills do IArena
 
-O catálogo separa quatro papéis:
+O repositório contém a skill principal `iarena` na raiz (`SKILL.md`) e skills complementares em `skills/`.
 
-- **Criação:** produz uma variante independente.
-- **Marca:** restringe identidade, linguagem e componentes.
-- **Qualidade:** melhora código, acessibilidade ou padrões depois da criação.
-- **Síntese:** combina as vencedoras usando feedback rastreável.
-
-Não compare uma skill criadora contra uma skill de auditoria como se fossem equivalentes. Uma competição justa mantém o mesmo brief, modelo, limite e arquivo de saída, alterando apenas a variável declarada.
-
-## Usar sem copiar o conteúdo para o prompt
-
-Com o CLI aberto de skills:
+Instalação recomendada para Claude Code:
 
 ```bash
-npx skills use <URL-DA-SKILL> --agent claude-code
-npx skills use <URL-DA-SKILL> --agent codex
+npx skills add https://github.com/henriqueCaruso/IArena --skill iarena --skill ui-brs --skill favicon --skill revisor-ui --skill sintese-vencedora -a claude-code -g -y
 ```
 
-Ou instale no projeto:
+Papéis:
 
-```bash
-npx skills add <URL-DA-SKILL> -a claude-code -a codex -y
-```
+- **Orquestração:** `iarena` prepara o projeto, gera prompts e coordena subagentes.
+- **Criação/marca:** `ui-brs` melhora estrutura operacional dentro ou fora do tema BRS.
+- **Acabamento:** `favicon` complementa uma proposta.
+- **Qualidade:** `revisor-ui` revisa todas as variantes com os mesmos critérios.
+- **Síntese:** `sintese-vencedora` entra somente após comentários e voto.
+
+Não compare uma skill criadora contra uma skill de auditoria como se fossem equivalentes. Uma competição justa mantém o mesmo brief, modelo, limite, tema e arquivo de saída, alterando apenas a variável declarada.
 
 A página `http://localhost:4600/skills.html` contém links e comandos copiáveis para todas as opções catalogadas.

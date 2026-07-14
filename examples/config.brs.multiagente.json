@@ -1,0 +1,46 @@
+{
+  "slug": "demo-brs-multiagente",
+  "title": "Demonstração BRS — painel de automações",
+  "round": 1,
+  "theme": "brs",
+  "brief": "examples/brief.brs-demo.md",
+  "criteria": "templates/criterios-design.pt-BR.md",
+  "output_dir": "entries",
+  "run_dir": "runs/demo-brs-multiagente-r1",
+  "execution": {
+    "profile": "multiagente",
+    "concurrency": 4,
+    "reviewers": 1
+  },
+  "competitors": [
+    {
+      "id": "baseline-brs",
+      "label": "Baseline com tema BRS",
+      "objective": "Resolver o brief usando apenas o tema e os critérios compartilhados."
+    },
+    {
+      "id": "frontend-design-brs",
+      "label": "frontend-design dentro do tema BRS",
+      "skills": [
+        "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design/skills/frontend-design"
+      ],
+      "objective": "Buscar uma direção visual forte sem romper os tokens e critérios compartilhados da BRS."
+    },
+    {
+      "id": "ui-brs",
+      "label": "UI BRS operacional",
+      "skills": [
+        "skills/ui-brs/SKILL.md"
+      ],
+      "objective": "Otimizar estrutura operacional, linguagem e velocidade de decisão dentro do tema BRS."
+    },
+    {
+      "id": "ui-ux-pro-max-brs",
+      "label": "UI/UX Pro Max dentro do tema BRS",
+      "skills": [
+        "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/tree/main/.claude/skills/design"
+      ],
+      "objective": "Produzir uma alternativa independente de layout respeitando a identidade BRS compartilhada."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+/* BRS UI Kit — tokens canônicos "Control Room" */
+:root{
+  --bg:#0c1118;
+  --panel:#121a25;
+  --panel2:#18222f;
+  --line:#243245;
+  --txt:#e3ebf4;
+  --muted:#93a4b8;
+  --muted2:#6f819a;
+  --orange:#FF782D;
+  --orange-soft:#ff782d22;
+  --ok:#3ecf8e;
+  --warn:#f5b942;
+  --bad:#ef5b6b;
+  --sans:'Hanken Grotesk','Segoe UI',system-ui,sans-serif;
+  --disp:'Archivo','Segoe UI',system-ui,sans-serif;
+  --mono:'JetBrains Mono',Consolas,monospace;
+}

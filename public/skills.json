@@ -1,14 +1,24 @@
 {
   "updated_at": "2026-07-14",
-  "principle": "Compare criação com criação. Use skills de qualidade e síntese depois da primeira rodada.",
+  "principle": "Use o IArena para orquestrar. Compare criação com criação; aplique qualidade e síntese depois da primeira rodada.",
   "skills": [
+    {
+      "id": "iarena",
+      "name": "iarena",
+      "role": "orquestração",
+      "source": "IArena",
+      "url": "https://github.com/henriqueCaruso/IArena/blob/main/SKILL.md",
+      "best_for": "Instalar e operar a Arena no Claude Code, inclusive tema BRS e múltiplos subagentes.",
+      "notes": "Perfis normal, multiagente e ultracode; fallback sequencial quando o runtime não oferece subagentes.",
+      "recommended": true
+    },
     {
       "id": "baseline",
       "name": "Baseline sem skill",
       "role": "controle",
       "source": "IArena",
       "url": "",
-      "best_for": "Medir o ganho real causado pela skill, usando o mesmo modelo e brief.",
+      "best_for": "Medir o ganho real causado pela skill, usando o mesmo modelo, brief e tema.",
       "notes": "Inclua sempre que custo e token efficiency forem importantes.",
       "recommended": true
     },
@@ -28,8 +38,8 @@
       "role": "marca",
       "source": "IArena / BR Supply",
       "url": "https://github.com/henriqueCaruso/IArena/tree/main/skills/ui-brs",
-      "best_for": "Produtos internos operacionais com padrão preto, branco e laranja, linguagem simples e tabelas claras.",
-      "notes": "Pode competir sozinha ou combinada com frontend-design.",
+      "best_for": "Estrutura operacional, linguagem simples e decisões rápidas nos produtos internos.",
+      "notes": "Pode competir dentro do tema BRS compartilhado; nesse caso mede UX e estrutura, não apenas paleta.",
       "recommended": true
     },
     {
@@ -49,7 +59,7 @@
       "source": "NextLevelBuilder",
       "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/tree/main/.claude/skills/design",
       "best_for": "Alternativa ampla de design, tokens, UI styling, ícones e identidade.",
-      "notes": "Útil como contraste sem viés da marca interna.",
+      "notes": "Pode operar livre ou dentro do tema BRS compartilhado.",
       "recommended": true
     },
     {
@@ -69,7 +79,7 @@
       "source": "Anthropic",
       "url": "https://github.com/anthropics/skills/tree/main/skills/brand-guidelines",
       "best_for": "Estudar como uma marca pode ser transformada em regras reutilizáveis para agentes.",
-      "notes": "As regras são da Anthropic; use como referência de estrutura, não como identidade BR Supply.",
+      "notes": "Use como referência de estrutura, não como identidade BR Supply.",
       "recommended": false
     },
     {
@@ -119,7 +129,7 @@
       "source": "Vercel Labs",
       "url": "https://github.com/vercel-labs/design-systems-to-agent-skills",
       "best_for": "Transformar um design system real em skills verificadas para múltiplos agentes.",
-      "notes": "Próximo passo para evoluir ui-brs a partir do código e dos componentes reais.",
+      "notes": "Referência para evoluir o tema BRS a partir dos componentes reais.",
       "recommended": true
     }
   ]
